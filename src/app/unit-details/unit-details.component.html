@@ -1,0 +1,9 @@
+<div *ngIf="unit; else empty">
+    <h2>Unit {{ unit.unitNumber }}</h2>
+    <p>Status: {{ unit.unitStatus }}</p>
+    <p>Description: {{ unit.unitDescription }}</p>
+</div>
+
+<ng-template #empty>
+    <p>No unit selected</p>
+</ng-template>

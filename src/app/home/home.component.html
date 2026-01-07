@@ -1,0 +1,64 @@
+<div *ngIf="unit; else loading">
+
+    <h2>Unit {{ unit.unitNumber }}</h2>
+
+    <p><strong>Status:</strong> {{ unit.unitStatus }}</p>
+    <p><strong>Description:</strong> {{ unit.unitDescription }}</p>
+    <p><strong>Class Code:</strong> {{ unit.unitClassCode }}</p>
+    <p><strong>Unit Type:</strong> {{ unit.unitType ?? 'N/A' }}</p>
+    <p><strong>PM Due In Days:</strong> {{ unit.pmDueInDays }}</p>
+    <p><strong>Distance (Miles):</strong> {{ unit.distanceInMiles }}</p>
+    <p><strong>Has Notes:</strong> {{ unit.hasNotes ? 'Yes' : 'No' }}</p>
+
+    <hr />
+
+    <h3>Owning Location</h3>
+    <ul>
+        <li>Corp: {{ unit.owningLocation?.corp ?? 'N/A' }}</li>
+        <li>Location Code: {{ unit.owningLocation?.loc_cd ?? 'N/A' }}</li>
+        <li>Location Type: {{ unit.owningLocation?.loc_type ?? 'N/A' }}</li>
+        <li>Phone: {{ unit.owningLocation?.phoneNumber ?? 'N/A' }}</li>
+    </ul>
+
+    <hr />
+
+    <h3>Physical Location</h3>
+    <ul>
+        <li>Corp: {{ unit.physicalLocation?.corp }}</li>
+        <li>Location Name: {{ unit.physicalLocation?.loc_name }}</li>
+        <li>Branch Name: {{ unit.physicalLocation?.branch_name }}</li>
+        <li>Phone: {{ unit.physicalLocation?.phoneNumber ?? 'N/A' }}</li>
+    </ul>
+
+    <h4>Address</h4>
+    <ul>
+        <li>{{ unit.physicalLocation?.locationAddress?.addressLine1 }}</li>
+        <li>{{ unit.physicalLocation?.locationAddress?.addressLine2 || '-' }}</li>
+        <li>
+            {{ unit.physicalLocation?.locationAddress?.city }},
+            {{ unit.physicalLocation?.locationAddress?.stateProvince }}
+            {{ unit.physicalLocation?.locationAddress?.postalCode }}
+        </li>
+        <li>{{ unit.physicalLocation?.locationAddress?.country }}</li>
+    </ul>
+
+    <hr />
+
+    <h3>Vehicle Details</h3>
+    <ul>
+        <li>Make: {{ unit.make }}</li>
+        <li>Model: {{ unit.model }}</li>
+        <li>Year: {{ unit.year }}</li>
+        <li>Transmission: {{ unit.transmission ?? 'N/A' }}</li>
+        <li>CDL Category: {{ unit.cdlCategory }}</li>
+        <li>CDL Info: {{ unit.cdlCategoryToolTip }}</li>
+        <li>Source: {{ unit.unitSource }}</li>
+        <li>Off Lease: {{ unit.offLease ? 'Yes' : 'No' }}</li>
+    </ul>
+    <button (click)="openUnit()">View Unit Details</button>
+
+</div>
+
+<ng-template #loading>
+    <p>Loading unit data…</p>
+</ng-template>
