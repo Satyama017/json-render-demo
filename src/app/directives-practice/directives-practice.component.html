@@ -1,0 +1,80 @@
+<h1>Hiiiii</h1>
+<ul>
+    @for (name of names; track $index) {
+    @if(show) {
+    <li>{{ name }}</li>
+    }
+    }
+</ul>
+
+@for (detail of details; track $index) {
+<p>
+    {{ detail.name }} {{ detail.Contact }}
+</p>
+}
+
+@if(isHealthy){
+<h1>Everyone is Healthy</h1>
+}
+
+
+<br>
+@if (login) {
+<button (click)="login = !login">Login</button>
+}
+@if (!login) {
+<button (click)="login = !login">Sign In</button>
+}
+
+<br>
+<br>
+
+<button (click)="setColor('red')" style="background-color: red;">Red</button>
+<button (click)="setColor('aqua')" style="background-color: aqua;">Aqua</button>
+<button (click)="setColor('green')" style="background-color: yellowgreen;">Green</button>
+<button (click)="setColor('yellow')" style="background-color: yellow;">Yellow</button>
+<button (click)="setColor('pink')" style="background-color: pink;">Pink</button>
+<button (click)="setColor('orange')" style="background-color: orange;">Orange</button>
+
+@switch (color) {
+@case ('red') {
+<h1 style="background-color: red;">Red</h1>
+}
+@case ('aqua') {
+<h1 style="background-color: aqua;">Aqua</h1>
+}
+@case ('green') {
+<h1 style="background-color: green;">Green</h1>
+}
+@case ('yellow') {
+<h1 style="background-color: yellow;">Yellow</h1>
+}
+@case ('pink'){
+<h1 style="background-color: pink;">Pink</h1>
+}
+@case ('orange') {
+<h1 style="background-color: orange;">Orange</h1>
+}
+@default {
+<h1>No Valid input</h1>
+}
+}
+
+
+<!-- ngClass -->
+<h1 [ngClass]="{
+    'red': highLight === 'red',
+    'blue': highLight === 'blue',
+    'green': highLight === 'green'
+}">Text for NgClass - Attribute Directive</h1>
+<button (click)="EditText('red')" style="background-color: Red; color: white;">Red</button>
+<br>
+<button (click)="EditText('blue')" style="background-color: Blue; color: white;">Blue</button>
+<br>
+<button (click)="EditText('green')" style="background-color: green; color: white;">Green</button>
+
+<h1 [ngStyle]="{
+    color: isStyle === true ? 'red' : 'black',
+    backgroundColor: isStyle ? 'aqua' : 'white',
+}">Text for ngStyle</h1>
+<button (click)="isStyle = !isStyle">Toggle Style</button>

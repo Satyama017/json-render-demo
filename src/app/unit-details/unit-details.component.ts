@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UnitStateService } from '../services/unit-state.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ParentComponent } from '../parent/parent.component';
 
 @Component({
   selector: 'app-unit-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ParentComponent],
   templateUrl: './unit-details.component.html',
 })
 export class UnitDetailsComponent implements OnInit {
@@ -23,4 +24,10 @@ export class UnitDetailsComponent implements OnInit {
       this.unit = unit;
     });
   }
+
+  goToParent() {
+    this.router.navigate(['/parent']);
+  }
+
+  parentContent: string = 'Hello from the parent  ';
 }

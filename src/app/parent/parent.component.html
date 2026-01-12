@@ -1,0 +1,9 @@
+<p>parent works!</p>
+<ul *ngIf="unit; else empty">
+    <h2>name:{{unit.name}}</h2>
+    <p>Raw:{{unit.description}}</p>
+</ul>
+
+<ng-template #empty>
+    <p>No Data has been loaded</p>
+</ng-template>

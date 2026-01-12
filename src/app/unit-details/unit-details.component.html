@@ -2,6 +2,10 @@
     <h2>Unit {{ unit.unitNumber }}</h2>
     <p>Status: {{ unit.unitStatus }}</p>
     <p>Description: {{ unit.unitDescription }}</p>
+
+    <button (click)="goToParent()">Back</button>
+    <app-parent [childContent]="parentContent"></app-parent>
+
 </div>
 
 <ng-template #empty>
